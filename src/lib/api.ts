@@ -1,16 +1,19 @@
 import Papa from "papaparse";
 
-// TODO: remove this and use the API
-const sheetURL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRp-BNer33uedck41E24UPSqLiT_0OX5kVCEWOkX4ceqwya9EvJs7cDb0yKEoYlmPgJBgCgG7zGwbmY/pub?gid=0&output=csv";
+const API_SHEET_URL = process.env.API_SHEET_URL!;
+const DEFAULT_PAGE_SIZE = +process.env.DEFAULT_PAGE_SIZE!;
 
 // get all recipes
 export async function getAll() {
-  const res = await fetch(sheetURL);
-  const textData = await res.text();
-  const parsedData = await Papa.parse<any>(textData, { header: true });
+  try {
+    const res = await fetch(API_SHEET_URL);
+    const textData = await res.text();
+    const parsedData = await Papa.parse<any>(textData, { header: true });
 
-  return parsedData.data;
+    return parsedData.data;
+  } catch (error) {
+    throw new Error("Failed to fetch all recipes");
+  }
 }
 
 // paginate the data
@@ -32,8 +35,13 @@ const api = {
     fetch: async ({ pageNumber }: { pageNumber: number }) => {
       const data = await getAll();
       // TODO: page size should be configurable by env variable
-      const paginatedData = paginateData({ data, pageNumber, pageSize: 10 });
+      const paginatedData = paginateData({
+        data,
+        pageNumber,
+        pageSize: DEFAULT_PAGE_SIZE,
+      });
 
+      // TODO: research on how to find out what is the best way to calculate total pages, should I use the same endpoint? or should I use the total count of the data?
       return { results: paginatedData, totalPages: 5 };
     },
   },

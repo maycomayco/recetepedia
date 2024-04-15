@@ -7,9 +7,19 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import api from "@/lib/api";
 import { cn } from "@/lib/utils";
 
-export default function RecipeTable({ recipes }) {
+type Props = {
+  currentPage: number;
+};
+
+export default async function RecipeTable({ currentPage }: Props) {
+  // TODO: get the page number from the query params
+  const { results: recipes } = await api.recipes.fetch({
+    pageNumber: currentPage,
+  });
+
   // TODO: change this to boolean
   const isVegetarian = (vegetarian: string) => vegetarian == "🥬";
 

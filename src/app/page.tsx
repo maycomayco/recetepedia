@@ -10,17 +10,21 @@ type Props = {
 
 export default async function Home({ searchParams }: Props) {
   const currentPage = Number(searchParams?.page || 1);
-  console.log({ currentPage });
   // TODO: mover esto de aca, el totalPages deberia obtenerse desde el component pagination
-  const { results, totalPages } = await api.recipes.fetch({ pageNumber: 1 });
+  const { totalPages } = await api.recipes.fetch({ pageNumber: 1 });
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 max-w-screen-lg mx-auto">
-      <h1 className="mb-4 text-xl md:text-2xl">Lista de recetas</h1>
-
+    <main className="flex flex-col">
       <section>
+        <h1 className="text-3xl font-bold tracking-tight">Recetepedia</h1>
+        <p className="text-neutral-400 mt-4">
+          Seguro que no sabes que cocinarte? 🤓
+        </p>
+      </section>
+
+      <section className="mt-6">
         <RecipeTable currentPage={currentPage} />
-        <div className="mt-5 flex w-full justify-center">
+        <div className="mt-4 flex w-full justify-center">
           <Pagination totalPages={totalPages} />
         </div>
       </section>

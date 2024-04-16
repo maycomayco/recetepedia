@@ -25,7 +25,6 @@ export default async function RecipeTable({ currentPage }: Props) {
 
   return (
     <Table>
-      {/* <TableCaption>Una lista de recetas para que te inspires.</TableCaption> */}
       <TableHeader>
         <TableRow>
           <TableHead>Menú</TableHead>
@@ -43,9 +42,9 @@ export default async function RecipeTable({ currentPage }: Props) {
             })}
           >
             <TableCell>
-              <p className={cn("line-clamp-1")}>
-                {recipe.name} {recipe.vegetarian == "🥬" ? "🥬" : ""}
-              </p>
+              {/* <p className={cn("line-clamp-1")}> */}
+              {recipe.vegetarian == "🥬" ? "🥬" : ""} {recipe.name}
+              {/* </p> */}
             </TableCell>
             {/* <TableCell className="text-xs">{recipe.tags}</TableCell> */}
             {/* <TableCell>✏️</TableCell> */}

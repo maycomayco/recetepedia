@@ -43,7 +43,9 @@ export default async function RecipeTable({ currentPage }: Props) {
             })}
           >
             <TableCell>
-              {recipe.name} {recipe.vegetarian == "🥬" ? "🥬" : ""}
+              <p className={cn("line-clamp-1")}>
+                {recipe.name} {recipe.vegetarian == "🥬" ? "🥬" : ""}
+              </p>
             </TableCell>
             {/* <TableCell className="text-xs">{recipe.tags}</TableCell> */}
             {/* <TableCell>✏️</TableCell> */}

@@ -28,7 +28,7 @@ export default async function RecipeTable({ currentPage }: Props) {
       {/* <TableCaption>Una lista de recetas para que te inspires.</TableCaption> */}
       <TableHeader>
         <TableRow>
-          <TableHead>Descripcion</TableHead>
+          <TableHead>Menú</TableHead>
           {/* <TableHead>Etiquetas</TableHead> */}
           {/* <TableHead>Acciones</TableHead> */}
         </TableRow>

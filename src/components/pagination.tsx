@@ -39,9 +39,13 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
             })}
           />
         </PaginationItem>
+
         <PaginationItem>
-          <PaginationLink href="#">{currentPage}</PaginationLink>
+          <PaginationLink href="#" className="border">
+            {currentPage}
+          </PaginationLink>
         </PaginationItem>
+
         <PaginationItem>
           <PaginationNext
             href={createPageURL(currentPage + 1)}

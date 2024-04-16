@@ -41,7 +41,10 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
         </PaginationItem>
 
         <PaginationItem>
-          <PaginationLink href="#" className="border">
+          <PaginationLink
+            href="#"
+            className={cn("hover:bg-transparent pointer-events-none border")}
+          >
             {currentPage}
           </PaginationLink>
         </PaginationItem>

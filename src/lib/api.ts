@@ -34,15 +34,17 @@ const api = {
   recipes: {
     fetch: async ({ pageNumber }: { pageNumber: number }) => {
       const data = await getAll();
-      // TODO: page size should be configurable by env variable
+
       const paginatedData = paginateData({
         data,
         pageNumber,
         pageSize: DEFAULT_PAGE_SIZE,
       });
 
+      const totalPages = Math.ceil(data.length / DEFAULT_PAGE_SIZE);
+
       // TODO: research on how to find out what is the best way to calculate total pages, should I use the same endpoint? or should I use the total count of the data?
-      return { results: paginatedData, totalPages: 5 };
+      return { results: paginatedData, totalPages };
     },
   },
 };

@@ -10,7 +10,7 @@ type Props = {
 
 export default async function Home({ searchParams }: Props) {
   const currentPage = Number(searchParams?.page || 1);
-  // TODO: mover esto de aca, el totalPages deberia obtenerse desde el component pagination
+  // TODO: movemos esto de aca? Revisar la app dashboard
   const { totalPages } = await api.recipes.fetch({ pageNumber: 1 });
 
   return (

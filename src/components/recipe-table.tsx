@@ -29,8 +29,8 @@ export default async function RecipeTable({ currentPage }: Props) {
       <TableHeader>
         <TableRow>
           <TableHead>Descripcion</TableHead>
-          <TableHead>Etiquetas</TableHead>
-          <TableHead>Acciones</TableHead>
+          {/* <TableHead>Etiquetas</TableHead> */}
+          {/* <TableHead>Acciones</TableHead> */}
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -43,10 +43,10 @@ export default async function RecipeTable({ currentPage }: Props) {
             })}
           >
             <TableCell>
-              {recipe.name} {recipe.vegetarian == "🥬" && "🥬"}
+              {recipe.name} {recipe.vegetarian == "🥬" ? "🥬" : ""}
             </TableCell>
-            <TableCell className="text-xs">{recipe.tags}</TableCell>
-            <TableCell>✏️</TableCell>
+            {/* <TableCell className="text-xs">{recipe.tags}</TableCell> */}
+            {/* <TableCell>✏️</TableCell> */}
           </TableRow>
         ))}
       </TableBody>

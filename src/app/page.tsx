@@ -1,5 +1,6 @@
 import Pagination from "@/components/pagination";
 import RecipeTable from "@/components/recipe-table";
+import ThemeSwitcher from "@/components/theme-switcher";
 import api from "@/lib/api";
 
 type Props = {
@@ -15,11 +16,15 @@ export default async function Home({ searchParams }: Props) {
 
   return (
     <main className="flex flex-col">
-      <section>
-        <h1 className="text-3xl font-bold tracking-tight">Recetepedia</h1>
-        <p className="text-neutral-400 mt-4">
-          Seguro que no sabes que cocinarte? 🤓
-        </p>
+      <section className="flex">
+        <div className="grow">
+          <h1 className="text-3xl font-bold tracking-tight">Recetepedia</h1>
+          <p className="text-neutral-400 mt-4">
+            Seguro que no sabes que cocinarte?
+          </p>
+        </div>
+
+        <ThemeSwitcher />
       </section>
 
       <section className="mt-6">

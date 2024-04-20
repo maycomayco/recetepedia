@@ -23,12 +23,15 @@ export default async function RecipeTable({ currentPage }: Props) {
   // TODO: change this to boolean
   const isVegetarian = (vegetarian: string) => vegetarian == "🥬";
 
+  const capitalize = (str: string) =>
+    str.charAt(0).toUpperCase() + str.slice(1);
+
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>Menú</TableHead>
-          {/* <TableHead>Etiquetas</TableHead> */}
+          <TableHead>Vegetariano</TableHead>
           {/* <TableHead>Acciones</TableHead> */}
         </TableRow>
       </TableHeader>
@@ -38,15 +41,17 @@ export default async function RecipeTable({ currentPage }: Props) {
           <TableRow
             key={recipe.id}
             className={cn({
-              "bg-green-50": isVegetarian(recipe.vegetarian),
+              "bg-green-50 dark:bg-green-950": isVegetarian(recipe.vegetarian),
             })}
           >
             <TableCell>
               {/* <p className={cn("line-clamp-1")}> */}
-              {recipe.vegetarian == "🥬" ? "🥬" : ""} {recipe.name}
+              {capitalize(recipe.name)}
               {/* </p> */}
             </TableCell>
-            {/* <TableCell className="text-xs">{recipe.tags}</TableCell> */}
+            <TableCell className="text-center">
+              {recipe.vegetarian == "🥬" ? "🥬" : ""}{" "}
+            </TableCell>
             {/* <TableCell>✏️</TableCell> */}
           </TableRow>
         ))}
